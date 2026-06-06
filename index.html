@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUNDO MALDITO - FICHA</title>
+
+    <link rel="shortcut icon" href="/src/imgs/icon-rpg.webp" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="/src/css/style.css">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#660000">
+</head>
+
+<body>
+
+    <div class="overlay-efeito"></div>
+
+    <div class="ficha-container">
+
+        <header class="header-main">
+            <h1 class="titulo-paranormal">MUNDO MALDITO</h1>
+            <p class="subtitulo">APOCALIPSE PARANORMAL</p>
+        </header>
+
+        <main>
+
+            <!-- TOPO -->
+            <section class="section-top">
+
+                <!-- FOTO -->
+                <div class="foto-perfil-wrapper" onclick="document.getElementById('foto-perfil').click()">
+
+                    <input type="file" id="foto-perfil" accept="image/*" style="display: none;">
+
+                    <div class="moldura-foto">
+                        <i class="fa-solid fa-skull-crossbones" id="icone-perfil"></i>
+
+                        <img id="imagem-perfil" src="" alt="Perfil" style="display: none;">
+                    </div>
+                </div>
+
+                <!-- DADOS -->
+                <div class="dados-grid">
+
+                    <div class="input-box">
+                        <label for="nome-personagem">PERSONAGEM</label>
+
+                        <input type="text" id="nome-personagem" placeholder="Nome do Sobrevivente">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="classe">CLASSE</label>
+
+                        <select id="classe">
+                            <option value="nenhuma">Nenhuma</option>
+                            <option value="combatente">Combatente</option>
+                            <option value="pactarios">Pactário</option>
+                            <option value="esoterico">Esotérico</option>
+                        </select>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="nome-jogador">JOGADOR</label>
+
+                        <input type="text" id="nome-jogador" placeholder="Seu nome">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="ocupacao">OCUPAÇÃO</label>
+
+                        <div class="ocupacao-select-wrapper">
+
+                            <select id="ocupacao">
+
+                                <option value="" disabled selected>
+                                    Selecione uma ocupação
+                                </option>
+
+                                <option value="ladrao">Ladrão</option>
+                                <option value="artista_marcial">Artista Marcial</option>
+                                <option value="sacerdote_pastor">Sacerdote/Pastor</option>
+                                <option value="cientista">Cientista</option>
+                                <option value="medico">Médico</option>
+                                <option value="cacador">Caçador</option>
+                                <option value="vendedor">Vendedor</option>
+                                <option value="atleta">Atleta</option>
+                                <option value="entregador">Entregador</option>
+                                <option value="veterinario">Veterinário</option>
+                                <option value="advogado">Advogado</option>
+                                <option value="mecanico">Mecânico</option>
+                                <option value="soldado">Soldado</option>
+                                <option value="psicologo">Psicólogo</option>
+                                <option value="quenga_quengo">Quenga/Quengo</option>
+                                <option value="professor">Professor</option>
+                                <option value="estrategista">Estrategista</option>
+                                <option value="investigador">Investigador</option>
+                                <option value="policial">Policial</option>
+                                <option value="outro">Outro</option>
+
+                            </select>
+
+                            <!-- BOTÃO INFO -->
+                            <button
+                                type="button"
+                                id="btn-info-ocupacao"
+                                class="btn-info-mini btn-info-classe"
+                            >
+                                ?
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div> <!-- FECHA dados-grid -->
+
+            </section> <!-- FECHA section-top -->
+
+            <!-- TABS -->
+            <nav class="tabs-nav">
+
+                <button class="tab-btn active" onclick="showTab('atributos')">
+                    ATRIBUTOS
+                </button>
+
+                <button class="tab-btn" onclick="showTab('pericias')">
+                    PERÍCIAS
+                </button>
+
+                <button class="tab-btn" onclick="showTab('anotacoes')">
+                    DIÁRIO
+                </button>
+
+            </nav>
+
+            <!-- CONTEÚDO -->
+            <section class="conteudo-principal">
+
+                <!-- ABA ATRIBUTOS -->
+                <div id="tab-atributos" class="tab-content active">
+
+                    <div class="atributos-grid">
+
+                        <div class="atrib-item">
+                            <h3>FORÇA</h3>
+                            <input type="number" value="0">
+                        </div>
+
+                        <div class="atrib-item">
+                            <h3>DEFESA</h3>
+                            <input type="number" value="0">
+                        </div>
+
+                        <div class="atrib-item">
+                            <h3>AGILIDADE</h3>
+                            <input type="number" value="0">
+                        </div>
+
+                        <div class="atrib-item">
+                            <h3>INTELIGÊNCIA</h3>
+                            <input type="number" value="0">
+                        </div>
+
+                        <div class="atrib-item">
+                            <h3>VIGOR</h3>
+                            <input type="number" value="0">
+                        </div>
+
+                        <div class="atrib-item">
+                            <h3>ENERGIA P.</h3>
+                            <input type="number" value="0">
+                        </div>
+
+                        <div class="atrib-item">
+                            <h3>CARISMA</h3>
+                            <input type="number" value="0">
+                        </div>
+
+                    </div>
+
+                    <!-- STATUS -->
+                    <div class="status-bars-container">
+
+                        <!-- COLUNA 1 -->
+                        <div class="status-column">
+
+                            <div class="bar-container hp">
+
+                                <label>
+                                    <i class="fa-solid fa-heart"></i>
+                                    VITALIDADE
+                                </label>
+
+                                <div class="bar-bg">
+                                    <div class="bar-fill" id="fill-hp" style="width: 100%"></div>
+                                </div>
+
+                                <div class="bar-controls">
+
+                                    <button class="btn-control" onclick="alterarValor('hp', -1)">
+                                        -
+                                    </button>
+
+                                    <input type="number" id="input-hp" value="20">
+
+                                    /
+
+                                    <span id="max-hp">20</span>
+
+                                    <button class="btn-control" onclick="alterarValor('hp', 1)">
+                                        +
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div class="bar-container sanidade">
+
+                                <label>
+                                    <i class="fa-solid fa-brain"></i>
+                                    SANIDADE
+                                </label>
+
+                                <div class="bar-bg">
+                                    <div class="bar-fill" id="fill-sanidade" style="width: 100%"></div>
+                                </div>
+
+                                <div class="bar-controls">
+
+                                    <button class="btn-control" onclick="alterarValor('sanidade', -1)">
+                                        -
+                                    </button>
+
+                                    <input type="number" id="input-sanidade" value="30">
+
+                                    /
+
+                                    <span id="max-sanidade">30</span>
+
+                                    <button class="btn-control" onclick="alterarValor('sanidade', 1)">
+                                        +
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div class="bar-container fome">
+
+                                <label>
+                                    <i class="fa-solid fa-utensils"></i>
+                                    FOME
+                                </label>
+
+                                <div class="bar-bg">
+                                    <div class="bar-fill" id="fill-fome" style="width: 100%"></div>
+                                </div>
+
+                                <div class="bar-controls">
+
+                                    <button class="btn-control" onclick="alterarValor('fome', -1)">
+                                        -
+                                    </button>
+
+                                    <input type="number" id="input-fome" value="10">
+
+                                    /
+
+                                    <span id="max-fome">10</span>
+
+                                    <button class="btn-control" onclick="alterarValor('fome', 1)">
+                                        +
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- COLUNA 2 -->
+                        <div class="status-column">
+
+                            <div class="bar-container energia">
+
+                                <label>
+                                    <i class="fa-solid fa-bolt"></i>
+                                    ENERGIA PARANORMAL
+                                </label>
+
+                                <div class="bar-bg">
+                                    <div class="bar-fill" id="fill-energia" style="width: 100%"></div>
+                                </div>
+
+                                <div class="bar-controls">
+
+                                    <button class="btn-control" onclick="alterarValor('energia', -1)">
+                                        -
+                                    </button>
+
+                                    <input type="number" id="input-energia" value="10">
+
+                                    /
+
+                                    <span id="max-energia">10</span>
+
+                                    <button class="btn-control" onclick="alterarValor('energia', 1)">
+                                        +
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div class="bar-container exposicao">
+
+                                <label>
+                                    <i class="fa-solid fa-eye"></i>
+                                    EXPOSIÇÃO PARANORMAL
+                                </label>
+
+                                <div class="bar-bg">
+                                    <div class="bar-fill" id="fill-exposicao" style="width: 0%"></div>
+                                </div>
+
+                                <div class="bar-controls">
+
+                                    <button class="btn-control" onclick="alterarValor('exposicao', -1)">
+                                        -
+                                    </button>
+
+                                    <input type="number" id="input-exposicao" value="0">
+
+                                    <span>% / 100%</span>
+
+                                    <button class="btn-control" onclick="alterarValor('exposicao', 1)">
+                                        +
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div class="bar-container xp">
+
+                            <label>
+                                <i class="fa-solid fa-star"></i>
+                                EXPERIÊNCIA
+                            </label>
+
+                            <div class="bar-bg">
+                                <div class="bar-fill" id="fill-xp"></div>
+                            </div>
+
+                            <div class="bar-controls">
+
+                                <button class="btn-control"
+                                        onclick="alterarXP(-10)">
+                                    -
+                                </button>
+
+                                <input type="number"
+                                    id="input-xp"
+                                    value="0">
+
+                                /
+
+                                <span id="max-xp">50</span>
+
+                                <button class="btn-control"
+                                        onclick="alterarXP(10)">
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ABA PERÍCIAS -->
+                <div id="tab-pericias" class="tab-content">
+
+                    <h2 class="titulo-secao-interna">PERÍCIAS</h2>
+
+                    <div class="pericias-grid">
+
+                        <div class="pericia-item">
+                            <label>Adestramento</label>
+                            <input type="number" id="adestramento-valor" value="0">
+                        </div>
+
+                        <div class="pericia-item">
+                            <label>Atletismo</label>
+                            <input type="number" id="atletismo-valor" value="0">
+                        </div>
+
+                        <div class="pericia-item">
+                            <label>Engenhosidade</label>
+                            <input type="number" id="engenhosidade-valor" value="0">
+                        </div>
+
+                        <!-- resto permanece igual -->
+
+                    </div>
+
+                </div>
+
+                <!-- ABA DIÁRIO -->
+                <div id="tab-anotacoes" class="tab-content">
+
+                    <h2 class="titulo-secao-interna">
+                        REGISTROS DO SOBREVIVENTE
+                    </h2>
+
+                    <div class="diario-grid">
+
+                        <div class="diario-item">
+
+                            <label for="habilidades">
+                                <i class="fa-solid fa-wand-sparkles"></i>
+                                HABILIDADES & VANTAGENS
+                            </label>
+
+                            <textarea
+                                id="habilidades"
+                                placeholder="Descreva suas capacidades especiais..."
+                            ></textarea>
+
+                        </div>
+
+                        <div class="diario-item">
+
+                            <label for="itens">
+                                <i class="fa-solid fa-backpack"></i>
+                                INVENTÁRIO & ITENS
+                            </label>
+
+                            <textarea
+                                id="itens"
+                                placeholder="Liste suas armas, suprimentos e raridades..."
+                            ></textarea>
+
+                        </div>
+
+                        <div class="diario-item">
+
+                            <label for="historia">
+                                <i class="fa-solid fa-book-skull"></i>
+                                HISTÓRIA
+                            </label>
+
+                            <textarea
+                                id="historia"
+                                placeholder="O passado que te trouxe até aqui..."
+                            ></textarea>
+
+                        </div>
+
+                        <div class="diario-item">
+
+                            <label for="diario-notas">
+                                <i class="fa-solid fa-pen-nib"></i>
+                                DIÁRIO DO JOGADOR
+                            </label>
+
+                            <textarea
+                                id="diario-notas"
+                                placeholder="Anotações, pistas e relatos da sessão..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal-info" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close-modal">&times;</span>
+
+            <h2 id="modal-titulo-ocupacao">
+                Título da Ocupação
+            </h2>
+
+            <hr>
+
+            <div class="modal-body">
+
+                <h3>
+                    <i class="fa-solid fa-star"></i>
+                    Atributos Iniciais:
+                </h3>
+
+                <p id="modal-atributos-info"></p>
+
+                <h3>
+                    <i class="fa-solid fa-list-check"></i>
+                    Perícias Iniciais:
+                </h3>
+
+                <p id="modal-pericias-info"></p>
+
+            </div>
+
+            <p class="modal-footer">
+                Dica: Adicione esses valores manualmente nas suas abas.
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="./src/js/index.js">
+        if ('serviceWorker' in navigator) {
+
+            navigator.serviceWorker
+                .register('./sw.js')
+                .then(() => {
+                    console.log('SW registrado');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+
+        }
+    </script>
+</body>
+</html>

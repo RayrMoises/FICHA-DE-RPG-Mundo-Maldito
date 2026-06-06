@@ -1,0 +1,22 @@
+{
+    "name": "Mundo Maldito",
+    "short_name": "M. Maldito",
+    "description": "Ficha de RPG Mundo Maldito",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#050505",
+    "theme_color": "#660000",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/src/imgs/icon-rpg.webp",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/src/imgs/icon-rpg.webp",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
