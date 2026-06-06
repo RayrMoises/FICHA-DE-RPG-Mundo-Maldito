@@ -615,6 +615,49 @@ input:focus, textarea:focus {
     color: var(--vermelho-brilhante);
 }
 
+/* --- RESPONSIVIDADE DO TOPO --- */
+
+/* ==========================
+   RESPONSIVIDADE DO TOPO
+   ========================== */
+
+@media (max-width: 768px) {
+
+    .section-top {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .moldura-foto {
+        width: 130px;
+        height: 170px;
+    }
+
+    .foto-perfil-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dados-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .input-box {
+        width: 100%;
+    }
+
+    .ocupacao-select-wrapper {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .ocupacao-select-wrapper select {
+        flex: 1;
+    }
+}
+
 /* --- RESPONSIVIDADE (300px a 450px) --- */
 
 @media (max-width: 450px) {
