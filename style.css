@@ -1,0 +1,763 @@
+/* Variáveis de Design */
+:root {
+    --vermelho-sangue: #660000;
+    --vermelho-brilhante: #ff1a1a;
+    --preto-corvo: #050505;
+    --preto-painel: #121212;
+    --borda-ritual: #330000;
+    --texto-principal: #e0e0e0;
+    --font-paranormal: 'Playfair Display', serif;
+}
+
+/* Reset e Body */
+* { box-sizing: border-box; }
+body {
+    background-color: var(--preto-corvo);
+    color: var(--texto-principal);
+    font-family: 'DM Serif Text', serif;
+    margin: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                      url('https://www.transparenttextures.com/patterns/dark-matter.png');
+}
+
+/* Efeito Visual de Fundo */
+.overlay-efeito {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, transparent 20%, black 150%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ficha-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 25px;
+    background: var(--preto-painel);
+    border: 1px solid var(--vermelho-sangue);
+    box-shadow: 0 0 30px rgba(0,0,0,1), inset 0 0 15px rgba(102, 0, 0, 0.2);
+}
+
+/* Header */
+.header-main {
+    text-align: center;
+    border-bottom: 2px solid var(--vermelho-sangue);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+.titulo-paranormal {
+    font-family: var(--font-paranormal);
+    font-size: 3.5rem;
+    color: var(--vermelho-brilhante);
+    margin: 0;
+    text-shadow: 0 0 10px var(--vermelho-sangue);
+    letter-spacing: 8px;
+}
+
+.subtitulo {
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Seção de Dados Superior */
+.section-top {
+    display: flex;
+    gap: 25px;
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.moldura-foto {
+    width: 160px;
+    height: 200px;
+    border: 2px solid var(--vermelho-sangue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    box-shadow: inset 0 0 20px var(--vermelho-sangue);
+    cursor: pointer;
+}
+
+.moldura-foto i { font-size: 4rem; color: #1a1a1a; }
+
+.moldura-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.dados-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.input-box label {
+    font-size: 0.75rem;
+    color: var(--vermelho-brilhante);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-box input, .input-box select {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--borda-ritual);
+    color: white;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+/* Navegação por Tabs */
+.tabs-nav {
+    display: flex;
+    margin-top: 30px;
+    border-bottom: 1px solid var(--vermelho-sangue);
+}
+
+.tab-btn {
+    padding: 12px 25px;
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-family: var(--font-paranormal);
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    color: var(--vermelho-brilhante);
+    border-bottom: 3px solid var(--vermelho-brilhante);
+    background: linear-gradient(to top, rgba(102, 0, 0, 0.2), transparent);
+}
+
+/* Grade de Atributos */
+.atributos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.atrib-item {
+    background: #000;
+    border: 1px solid var(--vermelho-sangue);
+    text-align: center;
+    padding: 10px;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); /* Estilo inclinado */
+}
+
+.atrib-item h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.atrib-item input {
+    background: transparent;
+    border: none;
+    color: var(--vermelho-brilhante);
+    font-size: 1.8rem;
+    width: 100%;
+    text-align: center;
+}
+
+/* Barras de Status e Colunas */
+.status-bars-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.bar-container { margin-bottom: 25px; }
+
+.bar-container label {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.bar-bg {
+    width: 100%;
+    height: 12px;
+    background: #000;
+    border: 1px solid #222;
+    overflow: hidden;
+}
+
+.bar-fill { height: 100%; transition: 0.4s; }
+
+/* Cores Específicas das Barras */
+.hp .bar-fill { background: linear-gradient(90deg, #440000, #ff0000); box-shadow: 0 0 10px rgba(255,0,0,0.5); }
+.sanidade .bar-fill { background: linear-gradient(90deg, #001144, #0044ff); box-shadow: 0 0 10px rgba(0,68,255,0.5); }
+.fome .bar-fill { background: linear-gradient(90deg, #443300, #ffaa00); box-shadow: 0 0 10px rgba(255,170,0,0.5); }
+.exposicao .bar-fill { background: linear-gradient(90deg, #220033, #aa00ff); box-shadow: 0 0 10px rgba(170,0,255,0.5); }
+.xp .bar-fill {
+    background: linear-gradient(90deg, #886600, #ffd700);
+    box-shadow: 0 0 10px rgba(255,215,0,0.5);
+}
+
+.bar-controls {
+    margin-top: 5px;
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.bar-controls input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 40px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+/* Tab Content Visibility */
+.tab-content { 
+    display: none; 
+}
+
+.tab-content.active { 
+    display: block !important; 
+}
+
+/* Estilização dos Botões de Controle */
+.bar-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.btn-control {
+    background: #1a1a1a;
+    border: 1px solid var(--vermelho-sangue);
+    color: var(--vermelho-brilhante);
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border-radius: 3px;
+}
+
+.btn-control:hover {
+    background: var(--vermelho-sangue);
+    color: white;
+    box-shadow: 0 0 10px var(--vermelho-brilhante);
+}
+
+.btn-control:active {
+    transform: scale(0.9);
+}
+
+/* Remover setas (spinners) do input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Para Firefox */
+}
+
+/* Cor da Barra de Energia Paranormal (Roxo) */
+.energia .bar-fill { 
+    background: linear-gradient(90deg, #2a0044, #a200ff); 
+    box-shadow: 0 0 10px rgba(162, 0, 255, 0.5); 
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Estilização da Aba de Perícias */
+.pericias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.pericia-card {
+    background: rgba(20, 0, 0, 0.5);
+    border-left: 3px solid var(--vermelho-sangue);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.3s;
+}
+
+.pericia-card:hover {
+    background: rgba(60, 0, 0, 0.3);
+    border-left-color: var(--vermelho-brilhante);
+}
+
+.pericia-nome {
+    flex: 1;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pericia-val {
+    width: 35px;
+    background: #000;
+    border: 1px solid var(--borda-ritual);
+    color: var(--vermelho-brilhante);
+    text-align: center;
+    padding: 3px;
+    font-weight: bold;
+}
+
+/* Checkbox estilizado (Sangue) */
+.pericia-card input[type="checkbox"] {
+    accent-color: var(--vermelho-brilhante);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.titulo-secao-interna {
+    font-family: var(--font-paranormal);
+    color: var(--vermelho-brilhante);
+    border-bottom: 1px solid var(--vermelho-sangue);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.pericias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+.pericia-item {
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid #220000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    transition: 0.3s;
+}
+
+.pericia-item:hover {
+    border-color: var(--vermelho-sangue);
+    background: rgba(30, 0, 0, 0.3);
+}
+
+.pericia-item label {
+    font-size: 0.9rem;
+    color: #ccc;
+    text-transform: uppercase;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group input[type="number"] {
+    width: 40px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--vermelho-sangue);
+    color: var(--vermelho-brilhante);
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.input-group input[type="checkbox"] {
+    accent-color: var(--vermelho-brilhante);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+/* Layout da Grid do Diário */
+.diario-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.diario-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.diario-item label {
+    font-family: var(--font-paranormal);
+    font-size: 0.9rem;
+    color: var(--vermelho-brilhante);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilização Geral das Textareas */
+.diario-item textarea {
+    width: 100%;
+    height: 250px; /* Altura ajustada para caber no layout 2x2 */
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--texto-principal);
+    border: 1px solid var(--vermelho-sangue);
+    padding: 12px;
+    font-family: inherit;
+    font-size: 12px;
+    resize: none;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.diario-item textarea:focus {
+    border-color: var(--vermelho-brilhante);
+    background: rgba(20, 0, 0, 0.6);
+    box-shadow: inset 0 0 10px rgba(102, 0, 0, 0.5);
+}
+
+/* Responsividade para telas menores (celulares) */
+@media (max-width: 768px) {
+    .diario-grid {
+        grid-template-columns: 1fr; /* Uma coluna apenas em telas pequenas */
+    }
+}
+
+/* --- SISTEMA DE CORES POR CLASSE --- */
+
+/* Estilo Base do Botão Info Classe */
+.info-classe-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.btn-info-classe {
+    background: transparent;
+    border: 1px solid var(--vermelho-sangue);
+    color: var(--texto-principal);
+    padding: 30px;
+    font-family: var(--font-paranormal);
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-info-classe:hover {
+    background: var(--vermelho-sangue);
+    box-shadow: 0 0 15px var(--vermelho-sangue);
+}
+
+/* Modificadores de Classe (O JS aplicará estas classes ao .ficha-container) */
+
+/* Combatente - Vermelho Vibrante */
+.ficha-container.classe-combatente {
+    border-color: #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.2), inset 0 0 15px rgba(255, 0, 0, 0.1);
+}
+.ficha-container.classe-combatente .titulo-paranormal { color: #ff0000; text-shadow: 0 0 10px #660000; }
+.ficha-container.classe-combatente .btn-info-classe { border-color: #ff0000; }
+
+/* Pactário - Roxo Abissal */
+.ficha-container.classe-pactarios {
+    border-color: #8a2be2;
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.3), inset 0 0 15px rgba(138, 43, 226, 0.1);
+}
+.ficha-container.classe-pactarios .titulo-paranormal { color: #bf77ff; text-shadow: 0 0 10px #4b0082; }
+.ficha-container.classe-pactarios .btn-info-classe { border-color: #8a2be2; color: #bf77ff; }
+.ficha-container.classe-pactarios .btn-info-classe:hover { background: #4b0082; }
+
+/* Esotérico - Ciano Arcano */
+.ficha-container.classe-esoterico {
+    border-color: #00f2ff;
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2), inset 0 0 15px rgba(0, 242, 255, 0.1);
+}
+.ficha-container.classe-esoterico .titulo-paranormal { color: #00f2ff; text-shadow: 0 0 10px #005f66; }
+.ficha-container.classe-esoterico .btn-info-classe { border-color: #00f2ff; color: #00f2ff; }
+.ficha-container.classe-esoterico .btn-info-classe:hover { background: #005f66; color: white; }
+
+/* Transição suave para a mudança de cores */
+.ficha-container, .titulo-paranormal, .btn-info-classe {
+    transition: all 0.5s ease-in-out;
+}
+
+/* --- ESTILIZAÇÃO DO BOTÃO INFO OCUPAÇÃO --- */
+
+.btn-info-classe {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--vermelho-sangue);
+    color: #666; /* Cor neutra enquanto não selecionado */
+    padding: 20px; /* Ajustado para melhor harmonia visual */
+    font-family: var(--font-paranormal);
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 80px;
+    text-transform: uppercase;
+}
+
+/* Efeito de Hover Padrão */
+.btn-info-classe:hover {
+    background: var(--vermelho-sangue);
+    color: white;
+    box-shadow: 0 0 15px var(--vermelho-sangue);
+}
+
+/* O Efeito quando a Ocupação é alterada (Classe via JS) */
+.btn-info-classe.ativo {
+    border-color: var(--vermelho-brilhante);
+    color: var(--vermelho-brilhante);
+    box-shadow: 0 0 20px rgba(255, 26, 26, 0.3);
+    text-shadow: 0 0 8px var(--vermelho-sangue);
+    animation: glow-pulsar 2s infinite;
+}
+
+/* Animação Paranormal */
+@keyframes glow-pulsar {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 26, 26, 0.2); }
+    50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 26, 26, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 26, 26, 0.2); }
+}
+
+/* Estilo do Modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 10% auto;
+    padding: 25px;
+    border: 2px solid var(--borda-ritual); /* Um laranja/vermelho pro clima apocalíptico */
+    width: 80%;
+    max-width: 500px;
+    color: white;
+    font-family: 'DM Serif Text', serif;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+    position: relative;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover { color: var(--vermelho-brilhante); }
+
+.modal-body h3 {
+    color: var(--vermelho-brilhante);
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.modal-footer {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+}
+
+.pericia-item input {
+    width: 25px;
+    text-align: center;
+    font-family: 'DM Serif Text', serif;
+    border: 1px solid var(--vermelho-sangue);
+    background-color: black;
+    color: var(--vermelho-brilhante);
+}
+
+/* --- RESPONSIVIDADE (300px a 450px) --- */
+
+@media (max-width: 450px) {
+    /* ... (mantenha os códigos anteriores de container, título e grid) ... */
+
+    .ficha-container {
+        margin: 10px;
+        padding: 15px;
+        width: calc(100% - 20px);
+    }
+
+    .titulo-paranormal {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+
+    .section-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .moldura-foto {
+        width: 140px;
+        height: 180px;
+    }
+
+    .dados-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .tabs-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 110px;
+    }
+
+    .atributos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .atrib-item {
+        clip-path: none; 
+        padding: 8px;
+    }
+
+    .atrib-item h3 { font-size: 0.75rem; }
+    .atrib-item input { font-size: 1.5rem; }
+
+    .status-bars-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .bar-controls {
+        justify-content: center;
+    }
+
+    .pericias-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pericia-item label {
+        font-size: 0.85rem;
+    }
+
+    /* --- AJUSTE REFINADO DO DIÁRIO --- */
+    .diario-item textarea {
+        height: 380px;      /* Aumentei um pouco a altura já que o texto é menor */
+        font-size: 0.85rem; /* Texto menor e mais elegante para mobile */
+        line-height: 1.4;   /* Espaçamento confortável, sem ser exagerado */
+        padding: 10px;      /* Menos padding lateral para ganhar espaço */
+        letter-spacing: 0.5px;
+    }
+
+    .diario-item label {
+        font-size: 0.9rem;
+        margin-top: 10px;
+        color: var(--vermelho-brilhante);
+    }
+}
+
+/* Ajustes para telas mínimas (300px - 320px) */
+@media (max-width: 320px) {
+    .titulo-paranormal {
+        font-size: 1.4rem;
+    }
+
+    .atrib-item input {
+        font-size: 1.2rem;
+    }
+
+    .diario-item textarea {
+        height: 320px;
+        font-size: 0.8rem; /* Ainda menor em telas ultra-compactas */
+    }
+}
+
+.ocupacao-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ocupacao-select-wrapper select {
+    flex: 1;
+}
+
+/* Botão mini de informação */
+.btn-info-mini {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--vermelho-sangue);
+    background: #0a0a0a;
+
+    color: var(--vermelho-brilhante);
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.3s ease;
+}
+
+.btn-info-mini:hover {
+    background: var(--vermelho-sangue);
+    color: white;
+
+    box-shadow: 0 0 12px var(--vermelho-brilhante);
+}
